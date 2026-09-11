@@ -2,6 +2,13 @@
 
 This repository contains the laboratory work for **COM-512: Offensive and Defensive Security Lab**.
 
+## Course Details
+
+- **Course Code:** COM-512
+- **Course:** Offensive and Defensive Security Lab
+- **Program:** B.Tech CSE (Cyber Security)
+- **Institute:** MIET (Autonomous), Jammu
+
 ## Experiments
 
 1. [Experiment 1: Nmap & Nessus](Experiment-1-Nmap-Nessus/README.md)
