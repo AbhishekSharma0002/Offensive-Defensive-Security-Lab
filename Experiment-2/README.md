@@ -10,7 +10,7 @@ To perform a safe exploitation on a virtual machine using **Metasploit** to unde
 
 Open the **Kali Linux** virtual machine as the attacker machine and the **Metasploitable** virtual machine as the target machine. Configure both virtual machines to use a **Host-only Adapter** so that they can communicate within the isolated lab network.
 
-![Step 1 Screenshot](images/1.jpg)
+![Step 1 Screenshot](images/step_1.jpg)
 
 ### Step 2: Verify IP addresses and network connectivity
 
@@ -20,7 +20,7 @@ ifconfig
 ping <Metasploitable-IP>
 ```
 
-![Step 2 Screenshot](images/2.jpg)
+![Step 2 Screenshot](images/step_2.jpg)
 
 ### Step 3: Scan the target using Nmap
 
@@ -29,7 +29,7 @@ Perform a TCP SYN scan with service and OS detection from Kali Linux against the
 nmap -sS -sV -O <Metasploitable-IP>
 ```
 
-![Step 3 Screenshot](images/3.jpg)
+![Step 3 Screenshot](images/step_3.jpg)
 
 ### Step 4: Search for the vulnerable FTP service in Metasploit
 
@@ -40,7 +40,7 @@ search vsftpd
 use <exploit-module>
 ```
 
-![Step 4 Screenshot](images/4.jpg)
+![Step 4 Screenshot](images/step_4.jpg)
 
 ### Step 5: Configure the exploit module
 
@@ -50,7 +50,7 @@ set RHOST <Metasploitable-IP>
 set LHOST <Kali-IP>
 ```
 
-![Step 5 Screenshot](images/jpg)
+![Step 5 Screenshot](images/step_5.jpg)
 
 ### Step 6: Execute the exploit and verify access
 
