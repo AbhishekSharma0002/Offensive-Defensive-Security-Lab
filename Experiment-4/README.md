@@ -23,19 +23,19 @@ ping <Target-IP> -c 4
 nmap <Target-IP>
 ```
 
-![Step 2 Screenshot](images/ss2.png)
+![Step 2 Screenshot](Images/ss2.png)
 
 ### Step 3: Configure firewall rules in pfSense
 
 Log in to the pfSense web interface and navigate to **Firewall → Rules → LAN**. Configure firewall rules to allow required traffic, such as HTTP, HTTPS, and DNS, and block other traffic according to the lab requirements.
 
-![Step 3 Screenshot](images/ss3.png)
+![Step 3 Screenshot](Images/ss3.png)
 
 ### Step 4: Enable Snort on the LAN interface
 
 Open **Services → Snort → Interfaces** in pfSense. Configure Snort on the LAN interface and verify that its status indicates that the service is running.
 
-![Step 4 Screenshot](images/ss4.png)
+![Step 4 Screenshot](Images/ss4.png)
 
 ### Step 5: Generate network traffic and check detection
 
@@ -47,13 +47,13 @@ nmap -p 1-1000 <Target-IP>
 ping <Target-IP>
 ```
 
-![Step 5 Screenshot](images/ss5.png)
+![Step 5 Screenshot](Images/ss5.png)
 
 ### Step 6: Examine Snort alerts
 
 Navigate to **Services → Snort → Alerts** in pfSense. Review the alert log to identify recorded events, including ICMP ping detection alerts generated during the test.
 
-![Step 6 Screenshot](images/ss6.png)
+![Step 6 Screenshot](Images/ss6.png)
 
 ## Result
 
