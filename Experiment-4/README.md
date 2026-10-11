@@ -10,7 +10,7 @@ To configure firewall rules using **pfSense** and enable intrusion detection usi
 
 Start the pfSense virtual machine and verify the WAN and LAN interface IP addresses. Confirm that the LAN interface is configured and accessible from the lab network.
 
-![Step 1 Screenshot](images/ss1.png)
+![Step 1 Screenshot](Images/ss1.png)
 
 ### Step 2: Verify network connectivity and identify the target
 
