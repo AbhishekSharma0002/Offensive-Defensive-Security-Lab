@@ -1,47 +1,121 @@
-Experiment 7: OSINT Reconnaissance Using Google Dorking and Shodan
-1. Objective
-To perform Open-Source Intelligence (OSINT) reconnaissance using Google advanced search operators and Shodan to discover publicly available information, identify exposed services, and understand the information that can be gathered about internet-connected systems.
+# Experiment 7: OSINT Reconnaissance Using Google Dorking and Shodan
 
-2. Procedure
-Step 1: Perform Domain-Based Reconnaissance Using Google
-Open Google and use the search operator site:gov.in to restrict search results to websites under the .gov.in domain. Examine the results to understand how domain-based filtering helps identify publicly accessible information associated with a particular domain.
+## 1. Objective
 
-Step 1 Screenshot
+To perform Open-Source Intelligence (OSINT) reconnaissance using Google search operators and Shodan to find publicly available information and identify exposed services.
 
-Step 2: Search for Potentially Exposed Directories
-Enter the query intitle:"index of" into Google. Review the results to understand how search operators can identify pages that may display directory listings and reveal publicly accessible files or directories.
+## 2. Procedure
 
-Step 2 Screenshot
+### Step 1: Perform Domain-Based Reconnaissance Using Google
 
-Step 3: Find Cybersecurity-Related PDF Documents
-Use the Google search query inurl: cybersecurity filetype:pdf to locate PDF documents associated with cybersecurity-related URLs. Examine the results to understand how multiple search operators can be combined to narrow down publicly available information.
+Open Google and search using `site:gov.in` to find publicly indexed pages from government websites.
 
-Step 3 Screenshot
+**Search Query:**
+```text
+site:gov.in
+```
 
-Step 4: Search for Login-Related Pages
-Enter the query inurl: login in Google. Examine the results to identify web pages whose URLs contain the word login. This demonstrates how search operators can help discover login-related pages during reconnaissance.
+**Screenshot:**
 
-Step 4 Screenshot
+![Step 1 - Google Domain Search](https://github.com/2024A7R025/Offensive-Defensive-Security-Lab/raw/main/Experiment-7-OSINT-Recon/images/Ss1.png.jpeg)
 
-Step 5: Examine Google's Cache Search Operator
-Enter the query cache:google.com into Google and observe the information returned. The search result indicates that Google's public Cache feature has been discontinued. This step demonstrates the importance of understanding the availability and limitations of search operators used during reconnaissance.
+### Step 2: Search for Publicly Accessible Directories
 
-Step 5 Screenshot
+Enter `intitle:"index of"` in Google to find pages that may display directory listings.
 
-Step 6: Identify Internet-Facing Services Using Shodan
-Open Shodan and search for apache. Examine the results to identify internet-connected hosts reporting Apache web-server services. Observe displayed information such as IP addresses, server banners, HTTP response details, and service information.
+**Search Query:**
+```text
+intitle:"index of"
+```
 
-Step 6 Screenshot
+**Screenshot:**
 
-Step 7: Search for Services on a Specific Port in India
-In Shodan, enter the query port:23 country:"IN" to filter results for hosts in India associated with port 23, commonly used by Telnet. Review the results to understand how Shodan filters internet-connected systems by port and country.
+![Step 2 - Directory Search](https://github.com/2024A7R025/Offensive-Defensive-Security-Lab/raw/main/Experiment-7-OSINT-Recon/images/Ss2.png.jpeg)
 
-Step 7 Screenshot
+### Step 3: Find Cybersecurity-Related PDF Documents
 
-Step 8: Perform Hostname-Based Reconnaissance
-Enter the query hostname:gov.in in Shodan to search for hosts whose hostname matches the specified government-domain filter. Examine the results and observe available information about matching hosts, including detected services and network details.
+Use Google search operators to find PDF documents related to cybersecurity.
 
-Step 8 Screenshot
+**Search Query:**
+```text
+inurl:cybersecurity filetype:pdf
+```
 
-3. Result
-The experiment demonstrated OSINT reconnaissance using Google advanced search operators and Shodan. Google Dorking was used to filter publicly indexed information, including government-domain pages, directory listings, PDF documents, and login-related pages. Shodan was used to examine internet-facing services and filter hosts by service port, country, and hostname. The experiment highlighted how publicly available information can support security reconnaissance and why exposed services and directory listings should be reviewed and secured appropriately.
+**Screenshot:**
+
+![Step 3 - PDF Search](https://github.com/2024A7R025/Offensive-Defensive-Security-Lab/raw/main/Experiment-7-OSINT-Recon/images/Ss3.png.jpeg)
+
+### Step 4: Search for Login-Related Pages
+
+Enter `inurl:login` in Google to find web pages containing login in their URLs.
+
+**Search Query:**
+```text
+inurl:login
+```
+
+**Screenshot:**
+
+![Step 4 - Login Page Search](https://github.com/2024A7R025/Offensive-Defensive-Security-Lab/raw/main/Experiment-7-OSINT-Recon/images/Ss4.png.jpeg)
+
+### Step 5: Examine Google's Cache Operator
+
+Search for `cache:google.com` and observe the result. Google's public Cache feature has been discontinued.
+
+**Search Query:**
+```text
+cache:google.com
+```
+
+**Screenshot:**
+
+![Step 5 - Google Cache](https://github.com/2024A7R025/Offensive-Defensive-Security-Lab/raw/main/Experiment-7-OSINT-Recon/images/Ss5.png.jpeg)
+
+### Step 6: Identify Internet-Facing Services Using Shodan
+
+Open Shodan and search for `apache` to find publicly visible hosts reporting Apache web-server services.
+
+**Search Query:**
+```text
+apache
+```
+
+Observe IP addresses, server banners, and service information.
+
+**Screenshot:**
+
+![Step 6 - Shodan Apache Search](https://github.com/2024A7R025/Offensive-Defensive-Security-Lab/raw/main/Experiment-7-OSINT-Recon/images/Ss6.png.jpeg)
+
+### Step 7: Search for Services on a Specific Port in India
+
+Enter the query in Shodan to filter publicly visible hosts associated with port 23 in India.
+
+**Search Query:**
+```text
+port:23 country:"IN"
+```
+
+Port 23 is commonly used by Telnet.
+
+**Screenshot:**
+
+![Step 7 - Shodan Port Search](https://github.com/2024A7R025/Offensive-Defensive-Security-Lab/raw/main/Experiment-7-OSINT-Recon/images/Ss7.png.jpeg)
+
+### Step 8: Perform Hostname-Based Reconnaissance
+
+Enter the hostname filter in Shodan to search for hosts matching the government domain.
+
+**Search Query:**
+```text
+hostname:gov.in
+```
+
+Observe the available host and service information.
+
+**Screenshot:**
+
+![Step 8 - Shodan Hostname Search](https://github.com/2024A7R025/Offensive-Defensive-Security-Lab/raw/main/Experiment-7-OSINT-Recon/images/Ss8.png.jpeg)
+
+## 3. Result
+
+The experiment demonstrated OSINT reconnaissance using Google Dorking and Shodan. Google was used to find publicly indexed information, while Shodan helped identify internet-facing services and filter hosts by port, country, and hostname. This experiment highlighted the importance of identifying and securing publicly exposed information and services.
