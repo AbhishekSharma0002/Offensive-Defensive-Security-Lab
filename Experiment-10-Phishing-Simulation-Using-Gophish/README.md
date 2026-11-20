@@ -18,37 +18,37 @@ sudo apt install gophish -y
 sudo gophish
 ```
 
-![Screenshot 1](images/ss1.jpg)
+![Screenshot 1](images/ss1.jpg.jpeg)
 
 ### Step 2: Prepare a Test Recipient Group
 
 Create a recipient group in Gophish and add a single test recipient using a mailbox controlled by the person conducting the exercise or a participant who has agreed to the simulation.
 
-![Screenshot 2](images/ss2.jpg)
+![Screenshot 2](images/ss2.jpg.jpeg)
 
 ### Step 3: Review the Awareness Email Template
 
 Create and review a mock IT-themed email template containing a password expiration notification. The template is used as part of the controlled phishing awareness simulation.
 
-![Screenshot 3](images/ss3.jpg)
+![Screenshot 3](images/ss3.jpg.jpeg)
 
 ### Step 4: Review the Sending Profile
 
 Configure and review the SMTP sending profile required for email delivery. Keep the sending profile restricted to the authorized test mailbox and avoid exposing SMTP passwords or other account credentials.
 
-![Screenshot 4](images/ss4.jpg)
+![Screenshot 4](images/ss4.jpg.jpeg)
 
 ### Step 5: Review the Landing Page Settings
 
 Configure and review the mock login landing page used in the simulation. Keep password capture disabled to ensure that actual credentials are not collected during the awareness exercise.
 
-![Screenshot 5](images/ss5.jpg)
+![Screenshot 5](images/ss5.jpg.jpeg)
 
 ### Step 6: Check Email Delivery in the Test Mailbox
 
 Check the controlled test mailbox to verify whether the simulated phishing email was received. The test email appeared in the spam folder, demonstrating its delivery to the mailbox.
 
-![Screenshot 6](images/ss6.jpg)
+![Screenshot 6](images/ss6.jpg.jpeg)
 
 ### Step 7: Review the Campaign Summary
 
@@ -60,7 +60,7 @@ Open the Gophish campaign summary and examine the recorded campaign statistics. 
 - Data submissions: 0
 - Reports: 0
 
-![Screenshot 7](images/ss7.jpg)
+![Screenshot 7](images/ss7.jpg.jpeg)
 
 ## 3. Result
 
